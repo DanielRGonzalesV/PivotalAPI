@@ -1,0 +1,11 @@
+Feature: DeleteProject
+
+    Background: Create a new Project
+    Given I have set a connection to pivotal_tracker API service
+    When I send a POST request to /projects with:
+      |name|aaaaa99912161|
+      |public|true|
+
+  Scenario: Status code 200 when delete project
+    When I send a DELETE request to /projects
+    Then I expect Status code 204

@@ -1,0 +1,14 @@
+Feature: PutProject
+
+  Background: Create a new Project
+    Given I have set a connection to pivotal_tracker API service
+    When I send a POST request to /projects with:
+      |name|put21|
+      |public|true|
+
+  Scenario: Status code 200 when put project
+    When I change the name project
+    And I send a PUT request to /projects with:
+      |name|newName|
+    Then I expect Status code 200
+

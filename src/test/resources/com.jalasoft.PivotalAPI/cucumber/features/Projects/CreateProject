@@ -1,12 +1,10 @@
 Feature: Project
 
   @create_project
-  Scenario Outline: Status code 200 when create new Project with name only
+  Scenario: Status code 200 when create new Project
     Given I have set a connection to pivotal_tracker API service
-    When I send project a POST request to projects with name project <nameProject>
-    Then I expect Status the projects code 200
-    And I expect JSON for the name project equal a <nameProject>
+    When I send a POST request to /projects with:
+    |name|aaaaa|
+    |public|true|
+    Then I expect Status code 200
 
-  Examples:
-  | nameProject |
-  | Project_Home12 |

@@ -7,7 +7,8 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = {"src/test/resources/"}, //, "html:target/cucumber-html-report"
-        format = {"pretty"}
+        format = {"pretty"},
+        glue = {"src/test/java/com/jalasoft/PivotalAPI/cucumber/"}
 
 )
 public class Runner {
