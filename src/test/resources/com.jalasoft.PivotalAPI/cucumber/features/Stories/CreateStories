@@ -3,7 +3,7 @@ Feature: Stories
   Background: Create a new Project
     Given I have set a connection to pivotal_tracker API service
     When I send a POST request to /projects with:
-      |name|story790|
+      |name|story7620|
       |public|true|
 
   @create_stories
