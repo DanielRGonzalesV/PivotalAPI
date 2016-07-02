@@ -5,10 +5,12 @@ Feature: Stories
     When I send a POST request to /projects with:
       |name|story7620|
       |public|true|
+    Then I expect Status code 200
+    And store as Project1
 
   @create_stories
   Scenario: Status code 200 when create new Stories on a Project
     Given I have set a connection to pivotal_tracker API service
-    When I send a POST request to /stories with:
+    When I send a POST request to /projects/[Project1.id]/stories with:
       |name|newStories|
     Then I expect Status code 200

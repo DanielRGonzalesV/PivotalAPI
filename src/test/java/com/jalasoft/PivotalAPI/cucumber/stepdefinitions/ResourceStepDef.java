@@ -9,16 +9,16 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 
+import static com.jalasoft.PivotalAPI.cucumber.stepdefinitions.LocalRepository.projects;
 
-public class RequestStepDef {
+
+public class ResourceStepDef {
 
     StringBuilder str = new StringBuilder();
 
     private Response response;
 
-    public Response getResponse () {
-        return response;
-    }
+
 
     @Given("^I have set a connection to pivotal_tracker API service$")
     public void iHaveSetAConnectionToPivotalTrackerAPIService () {
@@ -31,12 +31,15 @@ public class RequestStepDef {
             response = RequestManager.postRequest (endPoint, values);
         }
         else{
-            int idProject = response.getBody ().path ("id");
-            str.append("/projects/");
-            str.append(idProject);
-            String strI = str.toString();
-            System.out.println(strI + endPoint);
-            response = RequestManager.postRequest((strI + endPoint),values);
+//            int idProject = response.getBody ().path ("id");
+//            str.append("/projects/");
+//            str.append(idProject);
+//            String strI = str.toString();
+//            System.out.println(strI + endPoint);
+//            response = RequestManager.postRequest((strI + endPoint),values);
+
+            response = RequestManager.postRequest(),values);
+
         }
 
     }
@@ -69,6 +72,18 @@ public class RequestStepDef {
         response = RequestManager.putRequest((endPoint + strI), values);
 
     }
+
+    public Response getResponse () {
+        return response;
+    }
+
+    public void getEndPoint(String verifyEndPoint){
+
+        if(verifyEndPoint.contains ("[]"))
+        projects.get ("Project1").path ("id");
+
+    }
+
 
 }
 

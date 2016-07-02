@@ -29,8 +29,8 @@ public class Authentication {
         baseURI = PropertiesInfo.getInstance().getBaseUrl();
         requestSpecification = given().relaxedHTTPSValidation()
                 .proxy("http://172.20.240.5:8080")
-                .header(TOKEN_HEADER, PropertiesInfo.getInstance().getToken())
-                .contentType(CONTENT_TYPE);
+                .header(TOKEN_HEADER, PropertiesInfo.getInstance().getToken());
+                //.contentType(CONTENT_TYPE);
     }
 
     public RequestSpecification getRequestSpecification() {
