@@ -44,11 +44,7 @@ public class ResourceStepDef {
 
     @When("^I send a DELETE request to (.*)$")
     public void iSendToProjectsADELETERequestAllTheProjects (String endPoint) {
-        int deleteEndpoint = response.getBody ().path ("id");
-        str.append("/");
-        str.append(deleteEndpoint);
-        String strI = str.toString();
-        response = RequestManager.deleteRequest (endPoint + strI);
+        response = RequestManager.deleteRequest (getEndPoint(endPoint));
     }
 
     @When("^I change the name project$")
@@ -58,11 +54,7 @@ public class ResourceStepDef {
 
     @And("^I send a PUT request to (.*) with:$")
     public void iSendAPUTRequestToProjects (String endPoint, Map<String, Object > values){
-        int putEndpoint = response.getBody ().path ("id");
-        str.append("/");
-        str.append(putEndpoint);
-        String strI = str.toString();
-        response = RequestManager.putRequest((endPoint + strI), values);
+        response = RequestManager.putRequest((getEndPoint(endPoint)), values);
 
     }
 
