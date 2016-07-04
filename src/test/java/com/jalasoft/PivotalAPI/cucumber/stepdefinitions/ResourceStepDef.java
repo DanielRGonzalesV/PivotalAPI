@@ -31,14 +31,7 @@ public class ResourceStepDef {
             response = RequestManager.postRequest (endPoint, values);
         }
         else{
-//            int idProject = response.getBody ().path ("id");
-//            str.append("/projects/");
-//            str.append(idProject);
-//            String strI = str.toString();
-//            System.out.println(strI + endPoint);
-//            response = RequestManager.postRequest((strI + endPoint),values);
-
-            response = RequestManager.postRequest(),values);
+            response = RequestManager.postRequest(getEndPoint(endPoint),values);
 
         }
 
@@ -77,10 +70,16 @@ public class ResourceStepDef {
         return response;
     }
 
-    public void getEndPoint(String verifyEndPoint){
+    public String getEndPoint(String verifyEndPoint){
 
-        if(verifyEndPoint.contains ("[]"))
-        projects.get ("Project1").path ("id");
+        String finalEndPoint = verifyEndPoint;
+
+        if(verifyEndPoint.contains ("Project.id")) {
+            int id = projects.get ("Project1").path ("id");
+            finalEndPoint = finalEndPoint.replace ("[Project1.id]", String.valueOf (id));
+        }
+
+        return finalEndPoint;
 
     }
 
